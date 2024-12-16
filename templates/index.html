@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Автошкола</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="icon" href="/static/car.png" type="image/png">
+</head>
+<body>
+  <header>
+    <!-- Десктопное меню -->
+    <nav class="desktop-menu">
+        <h2>Автошкола "Мастер Вождения"</h2>
+        <ul>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#faq">Вопросы</a></li>
+            <li><a href="#instructors">Инструкторы</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <!-- Мобильное меню -->
+    <nav class="mobile-menu">
+        <div class="headers"> <h3>Автошкола "Мастер Вождения"</h3> <div class="background-box"></div> <button class="menu-toggle">☰</button> </div>
+        <ul class="menu-items">
+            <button class="menu-close">×</button>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#faq">Вопросы</a></li>
+            <li><a href="#instructors">Инструкторы</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>О нас</h2>
+      <p>Мы обучаем вождению профессионально и безопасно. Работаем с 2010 года.</p>
+    </section>
+
+    <section id="faq">
+      <h2>Часто задаваемые вопросы</h2>
+      <details>
+        <summary>Сколько стоит обучение в автошколе?</summary>
+        <p>Стоимость обучения в автошколе - 28000 рублей. В стоимость входит:
+          теория, автодром, город, ГСМ (бензин), компьютерный класс, школьные экзамены, предоставление автомобиля на экзамен в ГИБДД в составе своей группы.
+          Имеется рассрочка платежа: первоначальный взнос 5000 р., остальные взносы на протяжении всего обучения.
+          Срок обучения: 2,5 - 3,5 месяца.
+          По окончании курсов автошкола предоставляет документы для ИФНС РФ на возмещение НДФЛ (13%) за обучение.</p>
+      </details>
+      <details>
+        <summary>Нужно ли сдавать автодром?</summary>
+        <p>Раньше, как только заканчивалась теоретическая часть, начинался автодром. Эта часть экзамена, как правило, давалась курсантам проще всего. Но с 1 апреля 2021 года экзаменационные упражнения на автодроме отменили: элементы, которые туда входили, курсанты теперь выполняют в городе.</p>
+      </details>
+      <details>
+        <summary>Какие этапы нужно пройти, чтобы получить права?</summary>
+          В кратце, для того, чтобы получить права, необходимо осуществить следующие операции: <br>
+          Пройти медкомиссию водителя и получить медсправку <br>
+          Подать документы в автошколу <br>
+          Пройти курсы теории вождения <br>          
+          Изучить теорию Правил Дорожного Движения <br>          
+          Обучиться вождению <br>          
+          Сдать теорию и практику в автошколе <br>         
+          Сдать экзамены в ГИБДД <br>         
+          Получить свое водительское удостоверение в подразделении ГИБДД</p>
+      </details>
+      <details>
+          <summary>Какие документы нужны для записи в автошколу?</summary>
+          <p>Прежде чем записаться в автошколу, у вас должен быть подготовлен необходимый пакет документов.
+            К основным документам относятся:
+            паспорт гражданина РФ или другой документ, подтверждающий личность,           
+            СНИЛС и          
+            Медицинская справка по форме 003 В/у.          
+            Медицинскую справку вы можете получить в медицинском центре.</p>
+      </details>
+      <details>
+          <summary>Как проходит экзамен?</summary>
+          <p>Первым по счету идет теоретический тест на знание правил дорожного движения. Весь процесс обучения в автошколе сопровождается заучиванием правил по учебнику, и у хорошо подготовленного курсанта не возникнет сложностей со сдачей этой части экзамена.
+            Раньше вопросы выдавались на бумажных билетах — сейчас тестирование проходит за компьютером. Всего курсант отвечает на 20 вопросов за 20 минут с правом на две ошибки. Пытаться списывать или жульничать на теоретическом экзамене в ГАИ не стоит. Это обязательно заметят и отправят на пересдачу. 
+            Наиболее сложной частью экзамена считается вождение в городе. Оно проходит на определенных маршрутах, включающих в себя сложные перекрестки и участки дороги, где запрещена остановка и стоянка. Помимо этого, студенты обязаны выполнить в городе часть упражнений.</p>
+      </details>
+      <details>
+        <summary>Можно ли записаться на дополнительные занятия с инструктором автошколы?</summary>
+        <p>Да, это возможно. Вы можете выбрать неограниченное количество дополнительных занятий. Наши инструктора будут внимательно следить за тем, чтобы вы отработали все полученные теоретические знания на практике, и по вашему желанию вы можете как уменьшить, так и увеличить число практических часов.</p>
+      </details>
+    </section>
+
+    <section id="instructors">
+      <h2>Инструкторы и машины</h2>
+      <div id="instructors-container">
+        <!-- Контент подгружается с сервера -->
+      </div>
+    </section>
+
+    <section id="groups">
+      <h2>Группы</h2>
+      <div class="group">
+        <h3>Группа 1</h3>
+        <p>Дата начала занятий: 1 января</p>
+      </div>
+      <div class="group">
+        <h3>Группа 2</h3>
+        <p>Дата начала занятий: 1 июля</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Записаться в группу</h2>
+      <form id="applicationForm">
+        <label for="name">ФИО:</label>
+        <input type="text" id="name" name="name" oninput="nameinput()" maxlength="100">
+        <span id="nameError" style="color: red;"></span> <br>
+        
+        <label for="group">Группа:</label>
+        <select id="group" name="group" required>
+          <option value="Группа 1">Группа 1</option>
+          <option value="Группа 2">Группа 2</option>
+        </select>
+        
+        <label for="phone">Телефон:</label>
+        <input type="tel" id="phone" name="phone" maxlength="12" placeholder="+7(ххх)ххххххх" pattern="^(\+7|8)?\s*\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$" required>
+        <span id="phoneError" style="color: red;"></span> <br>
+
+        <button type="submit">Отправить</button>
+      </form>
+      <div id="form-status"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 Автошкола "Мастер Вождения".</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+  <script>
+    const nameInput = document.getElementById('name');
+    const phoneInput = document.getElementById('phone');
+    const submitButton = document.getElementById('submitButton');
+  
+    // Валидация ФИО
+    nameInput.addEventListener('input', () => {
+      const nameError = document.getElementById('nameError');
+      const namePattern = /^[А-ЯЁ][а-яё]+\s[А-ЯЁ][а-яё]+\s[А-ЯЁ][а-яё]+$/;
+  
+      if (nameInput.value.trim() === '') {
+        nameError.textContent = 'Поле ФИО не должно быть пустым.';
+        submitButton.disabled = true;
+      } else if (!namePattern.test(nameInput.value)) {
+        nameError.textContent = 'Введите корректное ФИО (только буквы и пробелы).';
+        submitButton.disabled = true;
+      } else {
+        nameError.textContent = '';
+        submitButton.disabled = false;
+      }
+    });
+  
+    // Валидация номера телефона
+    phoneInput.addEventListener('input', () => {
+      const phoneError = document.getElementById('phoneError');
+      const phonePattern = /^(\+7\d{10}|8\d{10})$/;
+  
+      if (phoneInput.value.trim() === '') {
+        phoneError.textContent = 'Поле телефона не должно быть пустым.';
+        submitButton.disabled = true;
+      } else if (!phonePattern.test(phoneInput.value)) {
+        phoneError.textContent = 'Введите корректный номер телефона в формате +7(123)4567890.';
+        submitButton.disabled = true;
+      } else {
+        phoneError.textContent = '';
+        submitButton.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
