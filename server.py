@@ -4,14 +4,6 @@ import psycopg2
 app = Flask(__name__, static_folder='static')
 
 # Подключение к базе данных PostgreSQL
-"""conn = psycopg2.connect(
-    dbname="auto_school",
-    user="lab_tester",
-    password="lab_tester",
-    host="localhost",
-    port="5432"
-)"""
-
 conn = psycopg2.connect(
     dbname="avto_school",
     user="lab_tester",
