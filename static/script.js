@@ -1,96 +1,52 @@
-document.querySelectorAll(".faq-question").forEach((question) => {
-    question.addEventListener("click", () => {
-      const answer = question.nextElementSibling;
-      answer.style.display = answer.style.display === "block" ? "none" : "block";
-      question.querySelector("span").textContent = 
-        answer.style.display === "block" ? "-" : "+";
-    });
-  });
 
-  // Отправка заявки
-  document.getElementById("applicationForm").addEventListener("submit", async (event) => {
-    event.preventDefault();
-    
-    const name = document.getElementById("name").value;
-    const group = document.getElementById("group").value;
-    const phone = document.getElementById("phone").value;
-    
-    const response = await fetch("/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, group, phone }),
-    });
-  
-    const result = await response.text();
-    /*if (!(length(result) > 30)) {*/document.getElementById("form-status").textContent = result;//}
-  });
+// Отправка заявки
+document.getElementById("applicationForm").addEventListener("submit", async (event) => {
+event.preventDefault();
 
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('/instructors')
-        .then(response => response.json())
-        .then(data => {
-            const container = document.getElementById('instructors-container');
-            data.forEach(instructor => {
-                const instructorDiv = document.createElement('div');
-                instructorDiv.className = 'instructor';
-                instructorDiv.innerHTML = `
+const name = document.getElementById("name").value;
+const group = document.getElementById("group").value;
+const phone = document.getElementById("phone").value;
+
+const response = await fetch("/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, group, phone }),
+});
+
+const result = await response.text();
+document.getElementById("form-status").textContent = result;
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("instructors-container");
+
+    // Функция для получения данных об инструкторах
+    async function fetchInstructors() {
+        try {
+            const response = await fetch('/instructors');
+            if (!response.ok) {
+                throw new Error('Ошибка при получении данных об инструкторах.');
+            }
+            const instructors = await response.json();
+
+            // Формируем HTML для каждого инструктора
+            container.innerHTML = instructors.map(instructor => `
+                <div class="instructor-card">
+                    <img src="${instructor.image}" alt="${instructor.car_model}" class="car-image">
                     <h3>${instructor.name}</h3>
                     <p>Опыт: ${instructor.experience} лет</p>
-                    <p>Машина: ${instructor.car_model}</p>
-                `;
-                container.appendChild(instructorDiv);
-            });
-        })
-        .catch(error => console.error('Ошибка загрузки данных об инструкторах:', error));
+                    <p>Автомобиль: ${instructor.car_model}</p>
+                </div>
+            `).join('');
+        } catch (error) {
+            console.error('Ошибка:', error);
+            container.innerHTML = '<p>Не удалось загрузить данные об инструкторах.</p>';
+        }
+    }
+
+    // Вызываем функцию для получения данных
+    fetchInstructors();
 });
-
-document.querySelector('.menu-toggle').addEventListener('click', function () {
-  this.classList.toggle('active');
-  document.querySelector('.menu-items').classList.toggle('active');
-});
-
-document.querySelector('.menu-items').classList.remove('active');
-
-
-/*document.addEventListener('DOMContentLoaded', () => {
-  const header = document.querySelector('header');
-  const menuToggle = document.querySelector('.menu-toggle');
-  const menuItems = document.querySelector('.menu-items');
-  const menuClose = document.querySelector('.menu-close');
-
-  // Управление сужением header при прокрутке
-  window.addEventListener('scroll', () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      if (scrollTop > 50) {
-          header.classList.add('shrink');
-      } else {
-          header.classList.remove('shrink');
-      }
-  });
-
-  // Открытие мобильного меню
-  menuToggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      menuItems.classList.add('active');
-      menuToggle.setAttribute('aria-expanded', 'true');
-  });
-
-  // Закрытие мобильного меню
-  menuClose.addEventListener('click', (e) => {
-      e.preventDefault();
-      menuItems.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-  });
-
-  // Закрытие меню при клике вне его области
-  document.addEventListener('click', (e) => {
-      if (!menuItems.contains(e.target) && !menuToggle.contains(e.target)) {
-          menuItems.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-      }
-  });
-});*/
 
 // JavaScript для управления поведением header и мобильного меню
 
@@ -104,47 +60,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Открытие мобильного меню
   menuToggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      menuItems.classList.add('active');
-      menuToggle.setAttribute('aria-expanded', 'true');
+    e.preventDefault()
+    // Если меню закрыто, открываем его
+    menuItems.style.display = 'block'
+    menuToggle.setAttribute('aria-expanded', 'true'); // Обновляем атрибут aria
+    menuToggle.style.display = 'none'; // Скрываем кнопку меню
+    menuClose.style.display = 'block'; // Показываем кнопку закрытия
   });
 
   // Закрытие мобильного меню
   menuClose.addEventListener('click', (e) => {
-      e.preventDefault();
-      document.querySelector('.menu-items').classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
+    e.preventDefault();
+    menuToggle.style.display = 'block'; // Показываем кнопку меню
+    menuClose.style.display = 'none'; // Скрываем кнопку закрытия
+    // Если меню открыто, закрываем его
+    menuItems.style.display = 'none'
+    menuToggle.setAttribute('aria-expanded', 'false'); // Обновляем атрибут aria
   });
 
   // Закрытие меню при клике по ссылкам
   menuLinks.forEach(link => {
       link.addEventListener('click', (e) => {
-          document.querySelector('.menu-items').classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-      });
-  });
-
-  // Закрытие меню при клике вне его области
-  document.addEventListener('click', (e) => {
-      if (!menuItems.contains(e.target) && !menuToggle.contains(e.target)) {
-          document.querySelector('.menu-items').classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-          document.querySelector('.menu-items').classList.remove('active');
-      }
-  });
-
-  // Плавная прокрутка к якорям
-  menuLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const targetId = link.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-              window.scrollTo({
-                  top: targetElement.offsetTop - header.offsetHeight,
-                  behavior: 'smooth'
-              });
-          }
+        e.preventDefault();
+        menuToggle.style.display = 'block'; // Показываем кнопку меню
+        menuClose.style.display = 'none'; // Скрываем кнопку закрытия
+        // Если меню открыто, закрываем его
+        menuItems.style.display = 'none'
+        menuToggle.setAttribute('aria-expanded', 'false'); // Обновляем атрибут aria
       });
   });
 });
@@ -152,14 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
 const menuToggle = document.querySelector('.menu-toggle');
 const menuClose = document.querySelector('.menu-close');
 const menuItems = document.querySelector('.menu-items');
-
-menuToggle.addEventListener('click', () => {
-    menuItems.style.display = 'block';
-});
-
-menuClose.addEventListener('click', () => {
-    menuItems.style.display = 'none';
-});
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
@@ -176,27 +110,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       });
   });
 });
-
-// Находим все ссылки в мобильном меню
-const menuLinks = document.querySelectorAll('.mobile-menu .menu-items a');
-
-// Находим контейнер мобильного меню
-const menuItemss = document.querySelector('.mobile-menu .menu-items');
-
-// Функция для закрытия мобильного меню
-function closeMenu() {
-  menuItemss.style.display = 'none'; // Прячем меню
-}
-
-// Добавляем обработчик на все ссылки в мобильном меню
-menuLinks.forEach(link => {
-  link.addEventListener('click', closeMenu); // Закрыть меню при клике на ссылку
-});
-
-// Если есть кнопка для открытия меню, добавим обработчик для её активации
-const menuToggles = document.querySelector('.mobile-menu .menu-toggle');
-
-menuToggles.addEventListener('click', function() {
-  menuItems.style.display = (menuItems.style.display === 'flex') ? 'none' : 'flex'; // Переключаем состояние меню
-});
-

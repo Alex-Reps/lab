@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,20 +15,23 @@
         <ul>
             <li><a href="#about">О нас</a></li>
             <li><a href="#faq">Вопросы</a></li>
-            <li><a href="#instructors">Инструкторы</a></li>
-            <li><a href="#contact">Контакты</a></li>
+            <li><a href="#instructors">Инструкторы и машины</a></li>
+            <li><a href="#contact">Записаться в группу</a></li>
         </ul>
     </nav>
 
     <!-- Мобильное меню -->
     <nav class="mobile-menu">
-        <div class="headers"> <h3>Автошкола "Мастер Вождения"</h3> <div class="background-box"></div> <button class="menu-toggle">☰</button> </div>
+        <div class="headers"> <h3>Автошкола "Мастер Вождения"</h3> 
+          <div class="background-box"></div> 
+          <button class="menu-toggle">☰</button>
+          <button class="menu-close">×</button>
+        </div>
         <ul class="menu-items">
-            <button class="menu-close">×</button>
             <li><a href="#about">О нас</a></li>
             <li><a href="#faq">Вопросы</a></li>
-            <li><a href="#instructors">Инструкторы</a></li>
-            <li><a href="#contact">Контакты</a></li>
+            <li><a href="#instructors">Инструкторы и машины</a></li>
+            <li><a href="#contact">Записаться в группу</a></li>
         </ul>
     </nav>
   </header>
@@ -37,6 +40,9 @@
     <section id="about">
       <h2>О нас</h2>
       <p>Мы обучаем вождению профессионально и безопасно. Работаем с 2010 года.</p>
+      <p>Телефон: +7(984)758-87-76</p> 
+      <p>Электронная почта: master_avto@mail.ru</p>
+      <p>Занятия проходят по адресу: ул. Ленина, 111</p>
     </section>
 
     <section id="faq">
@@ -95,21 +101,23 @@
 
     <section id="groups">
       <h2>Группы</h2>
-      <div class="group">
-        <h3>Группа 1</h3>
-        <p>Дата начала занятий: 1 января</p>
+      <div id="groups-grid">
+        <div class="group">
+          <h3>Группа 1 (дневная)</h3> 
+          <p>Дата начала занятий: 15 мая в 10:00</p> 
+        </div>
+        <div class="group">
+          <h3>Группа 2 (вечерняя)</h3>
+          <p>Дата начала занятий: 1 июля в 18:00</p>
       </div>
-      <div class="group">
-        <h3>Группа 2</h3>
-        <p>Дата начала занятий: 1 июля</p>
       </div>
     </section>
 
     <section id="contact">
       <h2>Записаться в группу</h2>
-      <form id="applicationForm">
+      <form id="applicationForm" class="container">
         <label for="name">ФИО:</label>
-        <input type="text" id="name" name="name" oninput="nameinput()" maxlength="100">
+        <input type="text" id="name" name="name" maxlength="100" required>
         <span id="nameError" style="color: red;"></span> <br>
         
         <label for="group">Группа:</label>
@@ -122,10 +130,11 @@
         <input type="tel" id="phone" name="phone" maxlength="12" placeholder="+7(ххх)ххххххх" pattern="^(\+7|8)?\s*\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$" required>
         <span id="phoneError" style="color: red;"></span> <br>
 
-        <button type="submit">Отправить</button>
+        <button id="submitButton" type="submit">Отправить</button>
       </form>
       <div id="form-status"></div>
     </section>
+
   </main>
 
   <footer>
@@ -172,5 +181,6 @@
       }
     });
   </script>
+  
 </body>
 </html>
